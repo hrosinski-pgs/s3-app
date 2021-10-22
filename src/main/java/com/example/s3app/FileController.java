@@ -16,6 +16,11 @@ public class FileController {
 
   @Autowired FileService fileServiceNew;
 
+  @GetMapping()
+  String healthCheck() {
+    return "UP";
+  }
+
   @GetMapping("/{fileName}")
   public ResponseEntity<String> findByName(@PathVariable("fileName") String fileName) {
     return new ResponseEntity<>(fileServiceNew.findByName(fileName), HttpStatus.OK);

@@ -3,6 +3,7 @@ package com.example.s3app;
 import com.amazonaws.auth.AWSCredentialsProviderChain;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -20,7 +21,7 @@ public class S3Configuration {
   public AmazonS3 getAmazonS3Client() {
     // Get Amazon S3 client and return the S3 client object
     return AmazonS3ClientBuilder.standard()
-        .withCredentials(new AWSCredentialsProviderChain())
+        .withCredentials(new DefaultAWSCredentialsProviderChain())
         .withRegion(s3RegionName)
         .build();
   }
